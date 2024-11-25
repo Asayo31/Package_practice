@@ -1,6 +1,6 @@
 package ru.courses.geometry;
 
-public class Circle {
+public class Circle extends Figure {
     private final Point center;
     private final double radius;
 
@@ -9,6 +9,7 @@ public class Circle {
         this.radius = radius;
     }
 
+    @Override
     public double getArea() {
         return Math.PI * radius * radius;
     }
