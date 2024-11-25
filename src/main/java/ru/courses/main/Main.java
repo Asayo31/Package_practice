@@ -1,30 +1,37 @@
 package ru.courses.main;
 
-import ru.courses.geometry.*;
-import ru.courses.math.*;
-import ru.courses.birds.*;
-
-import java.util.List;
+import static java.lang.Math.pow;
+import static java.lang.Integer.parseInt;
 
 public class Main {
     public static void main(String[] args) {
-        // Пример работы с геометрическими фигурами
-        Figure circle = new Circle(new Point(0, 0), 5);
-        Figure square = new Square(new Point(0, 0), 4);
-        Figure rectangle = new Rectangle(new Point(0, 0), 3, 6);
+        if (args.length < 2) {
+            System.out.println("Пожалуйста, передайте два параметра командной строки (X и Y).");
+            return;
+        }
 
-        List<Figure> figures = List.of(circle, square, rectangle);
-        double totalArea = FigureUtils.sumAllAreas(figures);
+        String xString = args[0];
+        String yString = args[1];
 
-        System.out.println("=== Общая площадь фигур ===");
-        System.out.println("Total Area: " + totalArea);
+        try {
+            double result = calculatePower(xString, yString);
+            System.out.println("Результат: " + result);
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка: один из параметров не является числом. " +
+                    "Проверьте входные данные: " + xString + ", " + yString);
+        }
+    }
 
-        // Работа с дробями
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(2, 5);
-
-        System.out.println("\n=== Работа с дробями ===");
-        System.out.println("Fraction1: " + fraction1);
-        System.out.println("Fraction2: " + fraction2);
+    /**
+     * Возводит число X (в формате строки) в степень Y (в формате строки).
+     *
+     * @param xString строковое представление числа X.
+     * @param yString строковое представление числа Y.
+     * @return результат возведения X в степень Y.
+     */
+    public static double calculatePower(String xString, String yString) {
+        int x = parseInt(xString);
+        int y = parseInt(yString);
+        return pow(x, y);
     }
 }
