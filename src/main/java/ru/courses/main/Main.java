@@ -1,34 +1,29 @@
 package ru.courses.main;
 
 import ru.courses.geometry.*;
-import ru.courses.math.*;
-import ru.courses.birds.*;
 
-import java.util.List;
+import ru.courses.geometry.Point;
+import ru.courses.geometry.Polyline;
 
 public class Main {
     public static void main(String[] args) {
         // Создаем точки
         Point p1 = new Point(0, 0);
-        Point p2 = new Point(1, 1);
-        Point p3 = new Point(0, 0);
-        Point p4 = new Point(1, 1);
+        Point p2 = new Point(3, 4);
+        Point p3 = new Point(6, 8);
 
-        // Создаем линии
-        Line line1 = new Line(p1, p2);
-        Line line2 = new Line(p3, p4);
+        // Создаем ломанные линии
+        Polyline polyLine1 = new Polyline(p1, p2, p3);
+        Polyline polyLine2 = new Polyline(new Point(0, 0), new Point(3, 4), new Point(6, 8));
 
-        // Проверка equals
-        System.out.println("line1 equals line2: " + line1.equals(line2)); // true
+        // Вывод информации
+        System.out.println("polyLine1: " + polyLine1);
+        System.out.println("polyLine2: " + polyLine2);
 
-        // Проверка hashCode
-        System.out.println("line1 hashCode: " + line1.hashCode());
-        System.out.println("line2 hashCode: " + line2.hashCode());
+        // Сравнение ломанных
+        System.out.println("polyLine1 equals polyLine2: " + polyLine1.equals(polyLine2)); // true
 
-        // Проверка clone
-        Line clonedLine = line1.clone();
-        System.out.println("clonedLine: " + clonedLine); // Line{start=(0, 0), end=(1, 1)}
-        System.out.println("line1 == clonedLine: " + (line1 == clonedLine)); // false
-        System.out.println("line1.equals(clonedLine): " + line1.equals(clonedLine)); // true
+        // Вывод длины ломаной линии
+        System.out.println("polyLine1 length: " + polyLine1.length()); // Длина
     }
 }
