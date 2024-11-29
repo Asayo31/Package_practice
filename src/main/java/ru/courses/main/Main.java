@@ -1,17 +1,31 @@
 package ru.courses.main;
 
-import ru.courses.geometry.Point; // Импортируем нашу точку
+import ru.courses.organization.Department;
+import ru.courses.organization.Employee;
 
 public class Main {
     public static void main(String[] args) {
-        // Экземпляр нашей точки
-        Point customPoint = new Point(3, 4);
+        // Создаем отделы
+        Department itDept = new Department("IT");
+        Department hrDept = new Department("HR");
 
-        // Экземпляр стандартной точки из java.awt, используя полное имя класса
-        java.awt.Point awtPoint = new java.awt.Point(5, 6);
+        // Создаем сотрудников
+        Employee alice = new Employee("Alice");
+        Employee bob = new Employee("Bob");
+        Employee charlie = new Employee("Charlie");
 
-        // Вывод значений точек
-        System.out.println("Custom Point from ru.courses.geometry: " + customPoint);
-        System.out.println("AWT Point from java.awt: " + awtPoint);
+        // Назначаем сотрудников в отделы
+        itDept.addEmployee(alice);
+        itDept.addEmployee(bob);
+        hrDept.addEmployee(charlie);
+
+        // Устанавливаем начальников
+        itDept.setHead(alice);
+        hrDept.setHead(charlie);
+
+        // Выводим информацию о сотрудниках
+        System.out.println(alice);   // Alice начальник отдела IT
+        System.out.println(bob);     // Bob работает в отделе IT, начальник которого Alice
+        System.out.println(charlie); // Charlie начальник отдела HR
     }
 }
