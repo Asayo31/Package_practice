@@ -1,23 +1,17 @@
 package ru.courses.main;
 
-import static java.lang.Integer.parseInt;
-import static java.lang.Math.pow;
+import ru.courses.geometry.Point; // Импортируем нашу точку
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length < 2) {
-            System.out.println("Укажите два числа для возведения в степень");
-            return;
-        }
+        // Экземпляр нашей точки
+        Point customPoint = new Point(3, 4);
 
-        try {
-            int x = parseInt(args[0]);
-            int y = parseInt(args[1]);
+        // Экземпляр стандартной точки из java.awt, используя полное имя класса
+        java.awt.Point awtPoint = new java.awt.Point(5, 6);
 
-            double result = pow(x, y);
-            System.out.println("Результат: " + result);
-        } catch (NumberFormatException e) {
-            System.out.println("Ошибка: Аргументы должны быть целыми числами.");
-        }
+        // Вывод значений точек
+        System.out.println("Custom Point from ru.courses.geometry: " + customPoint);
+        System.out.println("AWT Point from java.awt: " + awtPoint);
     }
 }
