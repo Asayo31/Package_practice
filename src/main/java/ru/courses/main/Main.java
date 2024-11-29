@@ -1,30 +1,25 @@
 package ru.courses.main;
-
-import ru.courses.geometry.*;
-import ru.courses.math.*;
-import ru.courses.birds.*;
-
-import java.util.List;
+import ru.courses.math.Fraction;
 
 public class Main {
     public static void main(String[] args) {
-        // Пример работы с геометрическими фигурами
-        Figure circle = new Circle(new Point(0, 0), 5);
-        Figure square = new Square(new Point(0, 0), 4);
-        Figure rectangle = new Rectangle(new Point(0, 0), 3, 6);
+        Fraction fraction1 = new Fraction(3, 4);
+        Fraction fraction2 = new Fraction(3, 4);
+        Fraction fraction3 = new Fraction(5, 6);
 
-        List<Figure> figures = List.of(circle, square, rectangle);
-        double totalArea = FigureUtils.sumAllAreas(figures);
+        // Проверка equals
+        System.out.println("fraction1 equals fraction2: " + fraction1.equals(fraction2)); // true
+        System.out.println("fraction1 equals fraction3: " + fraction1.equals(fraction3)); // false
 
-        System.out.println("=== Общая площадь фигур ===");
-        System.out.println("Total Area: " + totalArea);
+        // Проверка hashCode
+        System.out.println("fraction1 hashCode: " + fraction1.hashCode());
+        System.out.println("fraction2 hashCode: " + fraction2.hashCode());
+        System.out.println("fraction3 hashCode: " + fraction3.hashCode());
 
-        // Работа с дробями
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(2, 5);
-
-        System.out.println("\n=== Работа с дробями ===");
-        System.out.println("Fraction1: " + fraction1);
-        System.out.println("Fraction2: " + fraction2);
+        // Проверка clone
+        Fraction fractionClone = fraction1.clone();
+        System.out.println("fractionClone: " + fractionClone); // 3/4
+        System.out.println("fraction1 == fractionClone: " + (fraction1 == fractionClone)); // false
+        System.out.println("fraction1 equals fractionClone: " + fraction1.equals(fractionClone)); // true
     }
 }
