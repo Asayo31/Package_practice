@@ -1,30 +1,31 @@
 package ru.courses.main;
 
-import ru.courses.geometry.*;
-import ru.courses.math.*;
-import ru.courses.birds.*;
-
-import java.util.List;
+import ru.courses.organization.Department;
+import ru.courses.organization.Employee;
 
 public class Main {
     public static void main(String[] args) {
-        // Пример работы с геометрическими фигурами
-        Figure circle = new Circle(new Point(0, 0), 5);
-        Figure square = new Square(new Point(0, 0), 4);
-        Figure rectangle = new Rectangle(new Point(0, 0), 3, 6);
+        // Создаем отделы
+        Department itDept = new Department("IT");
+        Department hrDept = new Department("HR");
 
-        List<Figure> figures = List.of(circle, square, rectangle);
-        double totalArea = FigureUtils.sumAllAreas(figures);
+        // Создаем сотрудников
+        Employee alice = new Employee("Alice");
+        Employee bob = new Employee("Bob");
+        Employee charlie = new Employee("Charlie");
 
-        System.out.println("=== Общая площадь фигур ===");
-        System.out.println("Total Area: " + totalArea);
+        // Назначаем сотрудников в отделы
+        itDept.addEmployee(alice);
+        itDept.addEmployee(bob);
+        hrDept.addEmployee(charlie);
 
-        // Работа с дробями
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(2, 5);
+        // Устанавливаем начальников
+        itDept.setHead(alice);
+        hrDept.setHead(charlie);
 
-        System.out.println("\n=== Работа с дробями ===");
-        System.out.println("Fraction1: " + fraction1);
-        System.out.println("Fraction2: " + fraction2);
+        // Выводим информацию о сотрудниках
+        System.out.println(alice);   // Alice начальник отдела IT
+        System.out.println(bob);     // Bob работает в отделе IT, начальник которого Alice
+        System.out.println(charlie); // Charlie начальник отдела HR
     }
 }
