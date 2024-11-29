@@ -8,23 +8,27 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Пример работы с геометрическими фигурами
-        Figure circle = new Circle(new Point(0, 0), 5);
-        Figure square = new Square(new Point(0, 0), 4);
-        Figure rectangle = new Rectangle(new Point(0, 0), 3, 6);
+        // Создаем точки
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(1, 1);
+        Point p3 = new Point(0, 0);
+        Point p4 = new Point(1, 1);
 
-        List<Figure> figures = List.of(circle, square, rectangle);
-        double totalArea = FigureUtils.sumAllAreas(figures);
+        // Создаем линии
+        Line line1 = new Line(p1, p2);
+        Line line2 = new Line(p3, p4);
 
-        System.out.println("=== Общая площадь фигур ===");
-        System.out.println("Total Area: " + totalArea);
+        // Проверка equals
+        System.out.println("line1 equals line2: " + line1.equals(line2)); // true
 
-        // Работа с дробями
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(2, 5);
+        // Проверка hashCode
+        System.out.println("line1 hashCode: " + line1.hashCode());
+        System.out.println("line2 hashCode: " + line2.hashCode());
 
-        System.out.println("\n=== Работа с дробями ===");
-        System.out.println("Fraction1: " + fraction1);
-        System.out.println("Fraction2: " + fraction2);
+        // Проверка clone
+        Line clonedLine = line1.clone();
+        System.out.println("clonedLine: " + clonedLine); // Line{start=(0, 0), end=(1, 1)}
+        System.out.println("line1 == clonedLine: " + (line1 == clonedLine)); // false
+        System.out.println("line1.equals(clonedLine): " + line1.equals(clonedLine)); // true
     }
 }
