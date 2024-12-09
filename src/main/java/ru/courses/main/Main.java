@@ -1,4 +1,5 @@
 package ru.courses.main;
+import ru.courses.part9.OperationAttemptException;
 import ru.courses.part9.Sauce;
 import ru.courses.part9.Spiciness;
 import ru.courses.geometry.*;
@@ -37,5 +38,18 @@ public class Main {
         System.out.println(sauce3);
 
 
-    }
-}
+        //exception task3 part 9
+                try {
+                    riskyOperation();
+                } catch (OperationAttemptException e) {
+                    System.out.println("Обработано исключение: " + e.getMessage());
+                }
+            }
+
+            public static void riskyOperation() throws OperationAttemptException {
+                boolean errorCondition = true; // Имитация ошибки
+                if (errorCondition) {
+                    throw new OperationAttemptException("Попытка выполнения операции завершилась неудачей");
+                }
+            }
+        }
