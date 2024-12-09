@@ -21,5 +21,3 @@ public class Main {
         System.out.println("fractionClone: " + fractionClone); // 3/4
         System.out.println("fraction1 == fractionClone: " + (fraction1 == fractionClone)); // false
         System.out.println("fraction1 equals fractionClone: " + fraction1.equals(fractionClone)); // true
-    }
-}
