@@ -1,4 +1,5 @@
 package ru.courses.main;
+
 import ru.courses.part9.Sauce;
 import ru.courses.part9.Spiciness;
 import ru.courses.geometry.*;
@@ -37,5 +38,43 @@ public class Main {
         System.out.println(sauce3);
 
 
+        System.out.println(Operation.ADD.perform(1, 2));
+        System.out.println(Operation.SUBTRACT.perform(5, 3));
+        System.out.println(Operation.MULTIPLY.perform(4, 6));
+        System.out.println(Operation.DIVIDE.perform(8, 2));
+    }
+
+    //задание 2 блок 9
+    enum Operation {
+        ADD {
+            @Override
+            public int perform(int x, int y) {
+                return x + y;
+            }
+        },
+        SUBTRACT {
+            @Override
+            public int perform(int x, int y) {
+                return x - y;
+            }
+        },
+        MULTIPLY {
+            @Override
+            public int perform(int x, int y) {
+                return x * y;
+            }
+        },
+        DIVIDE {
+            @Override
+            public int perform(int x, int y) {
+                if (y == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return x / y;
+            }
+        };
+
+        // Абстрактный метод, который каждая операция реализует по-своему
+        public abstract int perform(int x, int y);
     }
 }
