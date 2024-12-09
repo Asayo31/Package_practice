@@ -1,5 +1,6 @@
 package ru.courses.main;
-
+import ru.courses.part9.Sauce;
+import ru.courses.part9.Spiciness;
 import ru.courses.geometry.*;
 
 import ru.courses.geometry.Point;
@@ -25,6 +26,16 @@ public class Main {
 
         // Вывод длины ломаной линии
         System.out.println("polyLine1 length: " + polyLine1.length()); // Длина
+
+
+        Sauce sauce1 = new Sauce("Табаско", Spiciness.VERY_SPICY);
+        Sauce sauce2 = new Sauce("Сливочный", Spiciness.NOT_SPICY);
+        Sauce sauce3 = new Sauce("Чили", Spiciness.SPICY);
+
+        System.out.println(sauce1);
+        System.out.println(sauce2);
+        System.out.println(sauce3);
+
 
     }
 }
