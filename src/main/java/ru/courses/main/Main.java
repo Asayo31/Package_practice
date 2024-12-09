@@ -1,31 +1,23 @@
 package ru.courses.main;
-
-import ru.courses.organization.Department;
-import ru.courses.organization.Employee;
+import ru.courses.math.Fraction;
 
 public class Main {
     public static void main(String[] args) {
-        // Создаем отделы
-        Department itDept = new Department("IT");
-        Department hrDept = new Department("HR");
+        Fraction fraction1 = new Fraction(3, 4);
+        Fraction fraction2 = new Fraction(3, 4);
+        Fraction fraction3 = new Fraction(5, 6);
 
-        // Создаем сотрудников
-        Employee alice = new Employee("Alice");
-        Employee bob = new Employee("Bob");
-        Employee charlie = new Employee("Charlie");
+        // Проверка equals
+        System.out.println("fraction1 equals fraction2: " + fraction1.equals(fraction2)); // true
+        System.out.println("fraction1 equals fraction3: " + fraction1.equals(fraction3)); // false
 
-        // Назначаем сотрудников в отделы
-        itDept.addEmployee(alice);
-        itDept.addEmployee(bob);
-        hrDept.addEmployee(charlie);
+        // Проверка hashCode
+        System.out.println("fraction1 hashCode: " + fraction1.hashCode());
+        System.out.println("fraction2 hashCode: " + fraction2.hashCode());
+        System.out.println("fraction3 hashCode: " + fraction3.hashCode());
 
-        // Устанавливаем начальников
-        itDept.setHead(alice);
-        hrDept.setHead(charlie);
-
-        // Выводим информацию о сотрудниках
-        System.out.println(alice);   // Alice начальник отдела IT
-        System.out.println(bob);     // Bob работает в отделе IT, начальник которого Alice
-        System.out.println(charlie); // Charlie начальник отдела HR
-    }
-}
+        // Проверка clone
+        Fraction fractionClone = fraction1.clone();
+        System.out.println("fractionClone: " + fractionClone); // 3/4
+        System.out.println("fraction1 == fractionClone: " + (fraction1 == fractionClone)); // false
+        System.out.println("fraction1 equals fractionClone: " + fraction1.equals(fractionClone)); // true
