@@ -25,5 +25,6 @@ public class Main {
 
         // Вывод длины ломаной линии
         System.out.println("polyLine1 length: " + polyLine1.length()); // Длина
+
     }
 }

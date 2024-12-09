@@ -1,13 +1,16 @@
 package ru.courses.geometry;
 
-public class Point {
-    private int x, y;
+public class Point implements Cloneable {
+    private int x;
+    private int y;
 
+    // Конструктор
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
+    // Геттеры
     public int getX() {
         return x;
     }

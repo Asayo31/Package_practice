@@ -1,86 +1,56 @@
 package ru.courses.math;
 
-import java.util.Objects;
+public class Fraction implements Cloneable {
+    private int num;
+    private int denum;
 
-public final class Fraction extends Number {
-    private final int numerator;
-    private final int denominator;
-
-    public Fraction(int numerator, int denominator) {
-        if (denominator == 0) {
-            throw new IllegalArgumentException("Denominator cannot be zero.");
+    public Fraction(int num, int denum) {
+        if (denum == 0) {
+            throw new IllegalArgumentException("Знаменатель не может быть равен нулю.");
         }
-        this.numerator = numerator;
-        this.denominator = denominator;
+        this.num = num;
+        this.denum = denum;
     }
 
-    public Fraction add(Fraction other) {
-        int commonDenominator = this.denominator * other.denominator;
-        int newNumerator = this.numerator * other.denominator + other.numerator * this.denominator;
-        return new Fraction(newNumerator, commonDenominator).simplify();
+    // Геттеры для числителя и знаменателя
+    public int getNum() {
+        return num;
     }
 
-    public Fraction subtract(Fraction other) {
-        int commonDenominator = this.denominator * other.denominator;
-        int newNumerator = this.numerator * other.denominator - other.numerator * this.denominator;
-        return new Fraction(newNumerator, commonDenominator).simplify();
+    public int getDenum() {
+        return denum;
     }
 
-    public Fraction multiply(Fraction other) {
-        return new Fraction(this.numerator * other.numerator, this.denominator * other.denominator).simplify();
-    }
-
-    public Fraction divide(Fraction other) {
-        if (other.numerator == 0) {
-            throw new ArithmeticException("Cannot divide by zero.");
-        }
-        return new Fraction(this.numerator * other.denominator, this.denominator * other.numerator).simplify();
-    }
-
-    private Fraction simplify() {
-        int gcd = gcd(Math.abs(numerator), Math.abs(denominator));
-        return new Fraction(numerator / gcd, denominator / gcd);
-    }
-
-    private int gcd(int a, int b) {
-        return b == 0 ? a : gcd(b, a % b);
-    }
-
-    @Override
-    public int intValue() {
-        return numerator / denominator;
-    }
-
-    @Override
-    public long longValue() {
-        return (long) numerator / denominator;
-    }
-
-    @Override
-    public float floatValue() {
-        return (float) numerator / denominator;
-    }
-
-    @Override
-    public double doubleValue() {
-        return (double) numerator / denominator;
-    }
-
+    // Переопределение метода toString
     @Override
     public String toString() {
-        return numerator + "/" + denominator;
+        return num + "/" + denum;
     }
 
+    // Переопределение метода equals для сравнения дробей
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Fraction fraction = (Fraction) o;
-        return this.subtract(fraction).numerator == 0; // Equal if their difference is zero.
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Сравнение ссылок
+        if (obj == null || getClass() != obj.getClass()) return false; // Проверка типа
+        Fraction other = (Fraction) obj;
+        return this.num == other.num && this.denum == other.denum; // Сравнение числителя и знаменателя
     }
 
+    // Переопределение метода hashCode (рекомендуется при переопределении equals)
     @Override
     public int hashCode() {
-        return Objects.hash(numerator, denominator);
+        int result = Integer.hashCode(num);
+        result = 31 * result + Integer.hashCode(denum);
+        return result;
+    }
+
+    // Переопределение метода clone
+    @Override
+    public Fraction clone() {
+        try {
+            return (Fraction) super.clone(); // Вызов родительского метода клонирования
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError("Клонирование не поддерживается", e);
+        }
     }
 }
