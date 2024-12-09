@@ -5,17 +5,30 @@ public class Sum {
         double sum = 0;
 
         for (String arg : args) {
-            try {
-                double number = Double.parseDouble(arg);
-                sum += number;
-            } catch (NumberFormatException e) {
+            if (isNumeric(arg)) {
+                sum += Double.parseDouble(arg);
+            } else {
                 System.out.println("Некорректное значение: \"" + arg + "\", будет считаться как 0.");
             }
         }
 
         System.out.println("Результат сложения: " + sum);
     }
+
+    // Метод для проверки, является ли строка числом
+    private static boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }
+
 
 //1. Сохраните код в файл Sum.java
 //2. скомпилировать javac Sum.java
