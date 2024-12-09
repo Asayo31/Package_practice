@@ -1,23 +1,26 @@
 package ru.courses.main;
-import ru.courses.math.Fraction;
+
+import ru.courses.geometry.Point;
 
 public class Main {
     public static void main(String[] args) {
-        Fraction fraction1 = new Fraction(3, 4);
-        Fraction fraction2 = new Fraction(3, 4);
-        Fraction fraction3 = new Fraction(5, 6);
+        Point point1 = new Point(3, 4);
+        Point point2 = new Point(3, 4);
+        Point point3 = new Point(5, 6);
 
         // Проверка equals
-        System.out.println("fraction1 equals fraction2: " + fraction1.equals(fraction2)); // true
-        System.out.println("fraction1 equals fraction3: " + fraction1.equals(fraction3)); // false
+        System.out.println("point1 equals point2: " + point1.equals(point2)); // true
+        System.out.println("point1 equals point3: " + point1.equals(point3)); // false
 
         // Проверка hashCode
-        System.out.println("fraction1 hashCode: " + fraction1.hashCode());
-        System.out.println("fraction2 hashCode: " + fraction2.hashCode());
-        System.out.println("fraction3 hashCode: " + fraction3.hashCode());
+        System.out.println("point1 hashCode: " + point1.hashCode());
+        System.out.println("point2 hashCode: " + point2.hashCode());
+        System.out.println("point3 hashCode: " + point3.hashCode());
 
         // Проверка clone
-        Fraction fractionClone = fraction1.clone();
-        System.out.println("fractionClone: " + fractionClone); // 3/4
-        System.out.println("fraction1 == fractionClone: " + (fraction1 == fractionClone)); // false
-        System.out.println("fraction1 equals fractionClone: " + fraction1.equals(fractionClone)); // true
+        Point clonedPoint = point1.clone();
+        System.out.println("clonedPoint: " + clonedPoint); // (3, 4)
+        System.out.println("point1 == clonedPoint: " + (point1 == clonedPoint)); // false
+        System.out.println("point1 equals clonedPoint: " + point1.equals(clonedPoint)); // true
+    }
+}
