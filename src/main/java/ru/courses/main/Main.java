@@ -1,7 +1,13 @@
 package ru.courses.main;
+import ru.courses.part9.OperationAttemptException;
 import ru.courses.part9.Sauce;
 import ru.courses.part9.Spiciness;
 import ru.courses.geometry.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 import ru.courses.geometry.Point;
 import ru.courses.geometry.Polyline;
@@ -37,5 +43,36 @@ public class Main {
         System.out.println(sauce3);
 
 
+        //task exception 4 part 9
+        String fileName = "numbers.txt"; // Замените на реальное имя файла
+
+        try {
+            int result = divide(fileName);
+            System.out.println("Результат деления: " + result);
+        } catch (OperationAttemptException e) {
+            System.out.println("Ошибка выполнения: " + e.getMessage());
+            System.out.println("Результат: 0");
+        }
+    }
+
+    public static int divide(String fileName) throws OperationAttemptException {
+        File file = new File(fileName);
+
+        try (Scanner sc = new Scanner(file)) {
+            int num1 = sc.nextInt();
+            int num2 = sc.nextInt();
+
+            return num1 / num2; // Возможен выброс ArithmeticException
+        } catch (FileNotFoundException e) {
+            throw new OperationAttemptException("Файл не найден: " + fileName, e);
+        } catch (InputMismatchException e) {
+            throw new OperationAttemptException("Некорректный формат данных в файле: " + fileName, e);
+        } catch (NoSuchElementException e) {
+            throw new OperationAttemptException("Недостаточно данных в файле: " + fileName, e);
+        } catch (ArithmeticException e) {
+            throw new OperationAttemptException("Деление на ноль в файле: " + fileName, e);
+        }
+// компиляция javac Main.java OperationAttemptException.java
+// java Main
     }
 }
